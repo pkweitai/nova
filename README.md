@@ -1,6 +1,6 @@
 # NOVA™ LED Display Landing Page
+![NOVA Screenshot](nova_screenshot.png)
 
-![NOVA Hero](nova_banner.png)
 
 A cinematic-themed interactive landing page for **NOVA**, the next-generation LED display platform for theaters.
 
@@ -20,9 +20,7 @@ This site highlights NOVA’s key features with glowing icons, responsive layout
 
 ---
 
-## 📸 Screenshot
 
-![NOVA Screenshot](assets/nova_screenshot.png)
 
 ---
 
