@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOVA LED Display</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: url('nova_bigscreen.png') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      backdrop-filter: brightness(0.8);
+      padding: 2rem;
+    }
+
+    .nova-logo {
+      font-size: 5rem;
+      font-weight: 900;
+      text-shadow: 0 0 20px #00ffff, 0 0 40px #00ccff;
+      animation: glow 2s ease-in-out infinite alternate;
+      letter-spacing: 0.3rem;
+      margin-bottom: 2rem;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #00ffff, 0 0 20px #00ccff; }
+      to   { text-shadow: 0 0 30px #00ffff, 0 0 60px #00ccff; }
+    }
+
+    .content {
+      text-align: left;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+      animation: fadeIn 2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.2rem 0;
+      font-size: 1.6rem;
+      color: #ffffff;
+      text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+      cursor: pointer;
+    }
+
+    .feature-list li span {
+      background: linear-gradient(to right, #00ffd5, #00b4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .icon {
+      height: 64px;
+      filter: drop-shadow(0 0 10px #00ffff);
+      flex-shrink: 0;
+    }
+
+    .demo-button {
+      margin-top: 2rem;
+      background: #00ffd5;
+      color: #000000;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+      transition: background 0.3s ease;
+    }
+
+    .demo-button:hover {
+      background: #00b4ff;
+    }
+
+    .email-form {
+      display: none;
+      flex-direction: column;
+      margin-top: 1.5rem;
+      width: 100%;
+      max-width: 400px;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .email-form input {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+
+    .email-form button {
+      background: #00b4ff;
+      color: #000;
+      border: none;
+      padding: 0.75rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .feature-description {
+      width: 350px;
+      background: linear-gradient(to right, #00ffd5, #00b4ff);
+      padding: 1rem;
+      border-radius: 10px;
+      color: #ffffff;
+      text-align: left;
+      font-size: 1rem;
+      box-shadow: 0 0 10px rgba(0,255,255,0.2);
+      min-height: 160px;
+      text-shadow: 0 0 6px rgba(0, 255, 255, 0.5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+
+    }
+
+    .feature-description p {
+      margin: 0;
+    }
+
+    @media screen and (max-width: 768px) {
+      table { display: block; width: 100%; }
+      td { display: block; width: 100%; }
+      .feature-description { width: 100%; margin-top: 2rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nova-logo">NOVA</div>
+
+  <table style="width: 100%; max-width: 1200px;">
+    <tr>
+      <td valign="top" style="padding-right: 2rem;">
+        <div class="content">
+          <ul class="feature-list">
+            <li onclick="showDescription(0)"><img class="icon" src="nova_icon_square_1.png" alt="AI" /><span>AI HDR</span></li>
+            <li onclick="showDescription(1)"><img class="icon" src="nova_icon_square_2.png" alt="Contrast" /><span>Infinite Contrast Ratio</span></li>
+            <li onclick="showDescription(2)"><img class="icon" src="nova_icon_square_3.png" alt="Dolby" /><span>Dolby Atmos Certified</span></li>
+            <li onclick="showDescription(3)"><img class="icon" src="nova_icon_square_4.png" alt="IMB" /><span>Full IMB Player</span></li>
+            <li onclick="showDescription(4)"><img class="icon" src="nova_icon_square_5.png" alt="Energy" /><span>Lowest Power & Maintenance</span></li>
+          </ul>
+
+          <div class="demo-wrapper" id="demoWrapper">
+            <button class="demo-button" onclick="toggleForm()">Request a Demo</button>
+
+            <div class="email-form" id="form">
+              <input type="email" placeholder="Enter your email" />
+              <button>Submit</button>
+            </div>
+          </div>
+        </div>
+      </td>
+      <td valign="top">
+        <div class="feature-description" id="descriptionBox">
+          <p id="descriptionText">Tap a feature to see more details.</p>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <script>
+    const form = document.getElementById("form");
+    const wrapper = document.getElementById("demoWrapper");
+
+    function toggleForm() {
+      form.style.display = "flex";
+      document.addEventListener("keydown", escHandler);
+      document.addEventListener("click", outsideClickHandler);
+    }
+
+    function hideForm() {
+      form.style.display = "none";
+      document.removeEventListener("keydown", escHandler);
+      document.removeEventListener("click", outsideClickHandler);
+    }
+
+    function escHandler(e) {
+      if (e.key === "Escape") {
+        hideForm();
+      }
+    }
+
+    function outsideClickHandler(e) {
+      if (!form.contains(e.target) && !e.target.classList.contains("demo-button")) {
+        hideForm();
+      }
+    }
+
+    const descriptions = [
+      "Automatically converts HDR content to SDR using AI to preserve visual integrity on legacy systems.",
+      "Pixel-level light control produces true blacks and dazzling highlights far beyond projector capabilities.",
+      "Certified Dolby Atmos support for a fully immersive audio-visual experience.",
+      "Built-in IMB for native encrypted DCP playback. No external server required.",
+      "Ultra-low energy draw and zero-maintenance LED design — no bulbs, no filters, no downtime."
+    ];
+
+    function showDescription(index) {
+      const textBox = document.getElementById("descriptionText");
+      textBox.textContent = descriptions[index];
+    }
+  </script>
+</body>
+</html>
